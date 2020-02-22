@@ -18,5 +18,29 @@ namespace WpfControlsDemo.ViewModels
             DataAccess da = new DataAccess();
             People = new BindableCollection<PersonModel>(da.GetPeople());
         }
+        public void AddPerson()
+        {
+            int lastId;
+            DataAccess dataAccess = new DataAccess();
+            if (People.Count > 0)
+            {
+            lastId = People.Max(x => x.PersonId);
+            }
+            else
+            {
+                lastId = 0;
+            }
+            People.Add(dataAccess.GetPerson(lastId +1));
+
+        }
+        public void RemovePerson() 
+        {
+            if (People.Count > 0)
+            {
+ DataAccess dataAccess = new DataAccess();
+            People.Remove(dataAccess.GetRandomItem<PersonModel>(People.ToArray()));
+            }
+           
+        }
     }
 }
