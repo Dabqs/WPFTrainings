@@ -12,30 +12,6 @@ namespace WpfControlsDemo.ViewModels
     public class ShellViewModel : Screen
     {
         public BindableCollection<PersonModel> People { get; set; }
-        private PersonModel selectedPerson;
-        private AddressModel selectedAddress;
-
-        public AddressModel SelectedAddress
-        {
-            get { return selectedAddress; }
-            set
-            {
-                selectedAddress = value;
-                SelectedPerson.PrimaryAddress = value;
-                NotifyOfPropertyChange(() => SelectedAddress);
-            }
-        }
-
-        public PersonModel SelectedPerson
-        {
-            get { return selectedPerson; }
-            set
-            {
-                selectedPerson = value;
-                SelectedAddress = value.PrimaryAddress;
-                NotifyOfPropertyChange(() => SelectedPerson);
-            }
-        }
 
         public ShellViewModel()
         {
